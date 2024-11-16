@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fafec3;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.topPicksBtn,
+.aboutBtn,
+.homeBtn {
+  background-color: #fafae3;
+  color: #000000;
+  border-radius: 50px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 80vh;
+}
+
+.about-box {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 30px;
+  width: 80%;
+  max-width: 900px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(179, 154, 203, 0.8);
+  text-align: center;
+}
+
+.about-box h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.about-box p {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+.decorative-circles {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #b39acb;
+}
+
+.cat-image {
+  position: absolute;
+  bottom: -230px;
+  left: -350px;
+  width: 800px;
+}
+
+.go-back-button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #000000;
+  background-color: #ffeb00;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  display: inline-block;
+  margin-top: 40px;
+
+}
+
+.go-back-button:hover {
+  background-color: #ffeb00;
+}
+
+.go-back-button:active {
+  background-color: #ffeb00;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.go-back-button span {
+  margin-right: 50px;
+  font-weight: bold;
+}
+
+.arrow-right {
+  width: 20px;
+  height: 20px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+}

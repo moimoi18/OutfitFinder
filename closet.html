@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Closet</title>
+    <link rel="stylesheet" href="closet.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./index.html">
+            <button type="button" class="nav-btn">Home</button>
+        </a>
+        <a href="./generator.html">
+            <button type="button" class="nav-btn">Generator</button>
+        </a>
+        <a href="./closet.html">
+            <button type="button" class="nav-btn active">Your Closet</button>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Your Saved Outfits</h1>
+        <div class="outfits-container" id="outfitsContainer">
+            <!-- Saved outfits will be displayed here -->
+        </div>
+    </main>
+
+    <!-- Include the JavaScript code directly -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const outfitsContainer = document.getElementById('outfitsContainer');
+            const savedOutfits = JSON.parse(localStorage.getItem('savedOutfits')) || [];
+
+            if (savedOutfits.length === 0) {
+                outfitsContainer.innerHTML = '<p class="no-outfits">You have no saved outfits. Go to the generator and start saving your favorite looks!</p>';
+            } else {
+                savedOutfits.forEach((outfit, index) => {
+                    const outfitDiv = document.createElement('div');
+                    outfitDiv.classList.add('outfit');
+
+                    outfitDiv.innerHTML = `
+                        <div class="outfit-images">
+                            <img src="${outfit.shirt}" alt="Shirt">
+                            <img src="${outfit.accessory}" alt="Accessory">
+                            <img src="${outfit.pants}" alt="Pants">
+                            <img src="${outfit.shoes}" alt="Shoes">
+                        </div>
+                        <button class="delete-btn" data-index="${index}">Delete</button>
+                    `;
+
+                    outfitsContainer.appendChild(outfitDiv);
+                });
+            }
+
+            // Add event listener for delete buttons
+            outfitsContainer.addEventListener('click', function(e) {
+                if (e.target.classList.contains('delete-btn')) {
+                    const index = e.target.getAttribute('data-index');
+                    deleteOutfit(index);
+                }
+            });
+
+            function deleteOutfit(index) {
+                savedOutfits.splice(index, 1);
+                localStorage.setItem('savedOutfits', JSON.stringify(savedOutfits));
+                location.reload(); // Reload the page to update the displayed outfits
+            }
+        });
+    </script>
+</body>
+</html>

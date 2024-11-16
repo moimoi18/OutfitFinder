@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outfit Finder</title>
+  <link rel="stylesheet" href="about.css">
+</head>
+</head>
+
+<body>
+  <div class="header">
+    <a href="index.html">
+      <button class="homeBtn">Home</button>
+    </a>
+    <a href="toppicks.html">
+      <button class="topPicksBtn">Top Picks</button>
+    </a>
+
+
+
+  </div>
+
+  <div class="container">
+    <div class="about-box">
+      <h2>Why Outfit Finder?</h2>
+      <p>
+        The application aims to address the everyday dilemma of deciding what to wear by offering a practical and
+        creative solution.
+        It not only helps users make fashion decisions but also showcases how coding and technology can intersect with
+        daily life, making it an enjoyable and educational experience.
+        Start using the Outfit Finder Application today and transform your daily outfit selection process into a fun and
+        interactive experience!
+      </p>
+
+      <!-- Decorative circles in the corner -->
+      <div class="decorative-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+
+      <!-- Cat illustration (use actual image source) -->
+      <img src="images/path_to_cat_image.png" alt="Cat" class="cat-image">
+    </div>
+
+    <!-- Go Back button -->
+    <button class="go-back-button">
+      <span>Go Back</span>
+      <i class="arrow-right"></i>
+    </button>
+  </div>
+
+  <script>
+    // Go back button functionality
+    document.querySelector('.go-back-button').addEventListener('click', function () {
+      window.history.back();
+    });
+
+
+  </script>
+</body>
+
+</html>

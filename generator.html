@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Outfit Display</title>
+    <style>
+        /* Reset and basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #feffd3;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .top-picks-btn {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            color: #000;
+            border-radius: 50px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            padding: 8px 50px;
+            border: 2px solid #000;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .nav a {
+            text-decoration: none;
+        }
+
+        .top-picks-btn:hover {
+            background-color: rgba(250, 250, 227, 1);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Snowflake Icon in Top Picks Button */
+        .top-picks-btn .snowflake {
+            font-size: 20px;
+            transform: scale(2.3);
+            margin-right: 20px;
+        }
+
+        .about-btn {
+            background-color: #fff;
+            color: #000;
+            border-radius: 20px;
+            padding: 8px 54px;
+            font-size: 18px;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+
+        .about-btn:hover {
+            background-color: rgba(250, 250, 227, 1);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Switch Controller Container */
+        .switch-controller {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+        }
+
+        /* Left Controller */
+        .left-control {
+            width: 180px; /* Increased width */
+            height: 450px; /* Increased height */
+            background-color: #b39acb;
+            border-radius: 90px 0 0 90px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Left Control Elements */
+        .left-control .d-pad {
+            margin-top: 60px;
+            align-self: center;
+            width: 90px;
+            height: 90px;
+            position: relative;
+        }
+
+        .left-control .d-pad::before,
+        .left-control .d-pad::after {
+            content: '';
+            position: absolute;
+            background-color: #444444;
+        }
+
+        .left-control .d-pad::before {
+            top: 40px;
+            left: 0;
+            width: 90px;
+            height: 15px;
+        }
+
+        .left-control .d-pad::after {
+            top: 0;
+            left: 40px;
+            width: 15px;
+            height: 90px;
+        }
+
+        /* Screen */
+        .screen {
+            width: 750px; /* Increased width */
+            height: 450px; /* Increased height */
+            background-color: #dfa2e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .screen .content-area {
+            width: 90%;
+            height: 90%;
+            background-color: #fff;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 12px;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .item-box {
+            background-color: #f5f5f5;
+            border-radius: 15px;
+            padding: 12px;
+        }
+
+        .item-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+
+        /* or:
+        .item-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; Changed from 'cover' to 'contain'
+        object-position: center;
+        border-radius: 10px;
+        }
+        */
+
+        .item-box img:hover {
+            opacity: 0.8;
+        }
+
+        /* Original item box classes */
+        .item-box.large {
+            grid-row: span 2;
+        }
+
+        .item-box.wide {
+            grid-column: span 2;
+        }
+
+        /* Right Controller */
+        .right-control {
+            width: 180px; /* Increased width */
+            height: 450px; /* Increased height */
+            background-color: #b39acb;
+            border-radius: 0 90px 90px 0;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Action Buttons */
+        .action-button {
+            width: 60px; /* Increased size */
+            height: 60px;
+            background: #ffeb3b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px; /* Increased font size */
+            cursor: pointer;
+            position: absolute;
+        }
+
+        .thumbs-down {
+            bottom: 90px; /* Adjusted position */
+            left: 30px;
+        }
+
+        .heart {
+            bottom: 90px; /* Adjusted position */
+            right: 30px;
+        }
+
+        /* Go Back Button */
+        .go-back {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ffeb3b;
+            padding: 12px 25px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .go-back::after {
+            content: "→";
+            font-size: 18px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 700px) {
+            .switch-controller {
+                flex-direction: column;
+                align-items: center;
+            }
+            .left-control,
+            .right-control {
+                width: 100%;
+                border-radius: 0;
+            }
+            .screen {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./toppicks.html">
+            <button type="button" class="top-picks-btn">
+                <span class="snowflake">❈</span> Top Picks
+            </button>
+        </a>
+        <a href="./about.html">
+            <button class="about-btn">ABOUT</button>
+        </a>
+    </nav>
+
+    <!-- Nintendo Switch Controller -->
+    <div class="switch-controller">
+        <!-- Left Controller -->
+        <div class="left-control">
+            <!-- D-Pad -->
+            <div class="d-pad"></div>
+            <!-- Additional elements can be added here -->
+        </div>
+
+        <!-- Screen -->
+        <div class="screen">
+            <div class="content-area">
+                <div class="item-box">
+                    <img id="shirtImg" src="images/Shirt1.JPG" alt="Shirt">
+                </div>
+                <div class="item-box">
+                    <img id="accessoryImg" src="images/Acess1.JPG" alt="Accessory">
+                </div>
+                <div class="item-box large">
+                    <img id="pantsImg" src="images/Pants1.JPG" alt="Pants">
+                </div>
+                <div class="item-box wide">
+                    <img id="shoesImg" src="images/Shoes1.JPG" alt="Shoes">
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Controller -->
+        <div class="right-control">
+            <!-- Action Buttons -->
+            <div class="action-button thumbs-down">👎</div>
+            <div class="action-button heart">❤️</div>
+            <!-- Additional elements can be added here -->
+        </div>
+    </div>
+
+    <!-- Go Back Button -->
+    <a href="./index.html">
+        <button class="go-back">GO BACK</button>
+    </a>
+
+    <!-- Include the JavaScript file -->
+    <script src="outfit.js"></script>
+</body>
+</html>
