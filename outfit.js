@@ -1,19 +1,53 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Define outfitItems directly in the JavaScript
+  // Define outfitItems with your actual image filenames
   const outfitItems = {
-    shirts: generateImageList('images/shirts/', 'Shirt', 9),
-    accessories: generateImageList('images/accessories/', 'Acess', 12),
-    pants: generateImageList('images/pants/', 'Pants', 9),
-    shoes: generateImageList('images/shoes/', 'Shoes', 8),
+    shirts: [
+      'images/shirts/1.JPG',
+      'images/shirts/2.JPG',
+      'images/shirts/3.JPG',
+      'images/shirts/4.JPG',
+      'images/shirts/5.JPG',
+      'images/shirts/6.JPG',
+      'images/shirts/7.JPG',
+      'images/shirts/Shirt1.JPG',
+      'images/shirts/Shirt2.JPG',
+    ],
+    accessories: [
+      'images/accessories/22.JPG',
+      'images/accessories/23.JPG',
+      'images/accessories/24.JPG',
+      'images/accessories/25.JPG',
+      'images/accessories/26.JPG',
+      'images/accessories/27.JPG',
+      'images/accessories/28.JPG',
+      'images/accessories/29.JPG',
+      'images/accessories/30.JPG',
+      'images/accessories/31.JPG',
+      'images/accessories/Acess1.JPG',
+      'images/accessories/Acess2.JPG',
+    ],
+    pants: [
+      'images/pants/8.JPG',
+      'images/pants/9.JPG',
+      'images/pants/10.JPG',
+      'images/pants/11.JPG',
+      'images/pants/12.JPG',
+      'images/pants/13.JPG',
+      'images/pants/14.JPG',
+      'images/pants/Pants1.JPG',
+      'images/pants/Pants2.JPG',
+    ],
+    shoes: [
+      'images/shoes/15.JPG',
+      'images/shoes/16.JPG',
+      'images/shoes/17.JPG',
+      'images/shoes/18.JPG',
+      'images/shoes/19.JPG',
+      'images/shoes/20.JPG',
+      'images/shoes/21.JPG',
+      'images/shoes/Shoes1.JPG',
+    ],
   };
-
-  function generateImageList(path, baseName, count) {
-    const list = [];
-    for (let i = 1; i <= count; i++) {
-      list.push(`${path}${baseName}${i}.JPG`);
-    }
-    return list;
-  }
 
   // Function to get a random item from an array
   function getRandomItem(array) {
@@ -90,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
       shirt: shirtImg.src,
       accessory: accessoryImg.src,
       pants: pantsImg.src,
-      shoes: shoesImg.src
+      shoes: shoesImg.src,
     };
 
     let savedOutfits = JSON.parse(localStorage.getItem('savedOutfits')) || [];
