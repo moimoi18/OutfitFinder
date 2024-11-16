@@ -5,29 +5,50 @@
 }
 
 body {
-  background-color: #fafec3;
-  font-family: 'Arial', sans-serif;
+  /* Set the background image */
+  background-image: url('images/BackgroundOfBackground.PNG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
   padding: 20px;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Changed to align items to the right */
   align-items: center;
-  padding: 20px 40px;
+  margin: 0 auto 4rem;
+  gap: 10px; /* Added gap between buttons */
+  padding: 10px;
+  position: relative; /* Ensure positioning can be tweaked */
+  top: -20px; /* Move the navbar slightly upward */
+}
+
+.header a {
+  text-decoration: none; /* Removes underline */
 }
 
 .topPicksBtn,
 .aboutBtn,
 .homeBtn {
-  background-color: #fafae3;
+  display: flex;
+  align-items: center;
+  background-color: white;
   color: #000000;
   border-radius: 50px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  border: 2px solid #000000;
   font-size: 20px;
-  padding: 10px 20px;
-  border: none;
+  padding: 8px 50px;
   cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.homeBtn:hover,
+.topPicksBtn:hover {
+  background-color: rgba(250, 250, 227, 1);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .container {

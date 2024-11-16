@@ -1,55 +1,64 @@
 function magnify(imgID, zoom) {
-  var img, glass, magnifiedImg, w, h;
+  var img, glass, w, h, bw;
   img = document.getElementById(imgID);
 
-  /* Create magnifier glass */
+  /* Create magnifier glass: */
   glass = document.createElement("DIV");
   glass.setAttribute("class", "img-magnifier-glass");
 
-  /* Create inner DIV for magnified image */
-  magnifiedImg = document.createElement("DIV");
-  magnifiedImg.setAttribute("class", "img-magnified");
-  glass.appendChild(magnifiedImg);
-
-  /* Insert magnifier glass */
+  /* Insert magnifier glass: */
   img.parentElement.insertBefore(glass, img);
 
-  /* Set background properties for the magnified image */
-  magnifiedImg.style.backgroundImage = "url('" + img.src + "')";
-  magnifiedImg.style.backgroundRepeat = "no-repeat";
-  magnifiedImg.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
-
-  /* Get half of the magnifier's width and height */
+  /* Set background properties for the magnifier glass: */
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  bw = 3; /* Border width */
   w = glass.offsetWidth / 2;
   h = glass.offsetHeight / 2;
 
-  /* Mouse and touch movement events */
+  /* Hide the magnifier glass initially */
+  glass.style.display = "none";
+
+  /* Mouse events */
   glass.addEventListener("mousemove", moveMagnifier);
   img.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mouseenter", showMagnifier);
+  img.addEventListener("mouseleave", hideMagnifier);
+
+  /* Touch events */
   glass.addEventListener("touchmove", moveMagnifier);
   img.addEventListener("touchmove", moveMagnifier);
+
+  function showMagnifier() {
+    glass.style.display = "block";
+  }
+
+  function hideMagnifier() {
+    glass.style.display = "none";
+  }
 
   function moveMagnifier(e) {
     var pos, x, y;
     e.preventDefault();
 
-    /* Get the cursor's x and y positions relative to the image */
+    /* Get the cursor's x and y positions */
     pos = getCursorPos(e);
     x = pos.x;
     y = pos.y;
 
-    /* Prevent the magnifier from moving outside the image */
+    /* Prevent the magnifier glass from being positioned outside the image */
     if (x > img.width - (w / zoom)) { x = img.width - (w / zoom); }
     if (x < w / zoom) { x = w / zoom; }
     if (y > img.height - (h / zoom)) { y = img.height - (h / zoom); }
     if (y < h / zoom) { y = h / zoom; }
 
     /* Set the position of the magnifier glass */
-    glass.style.left = (x - w) + "px";
-    glass.style.top = (y - h) + "px";
+    glass.style.left = (x - w + img.offsetLeft) + "px";
+    glass.style.top = (y - h + img.offsetTop) + "px";
 
     /* Display what the magnifier glass "sees" */
-    magnifiedImg.style.backgroundPosition = "-" + ((x * zoom) - w) + "px -" + ((y * zoom) - h) + "px";
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
   }
 
   function getCursorPos(e) {

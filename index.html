@@ -2,54 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Outfit Finder</title>
   <link rel="stylesheet" href="styles.css">
   <script src="magnify.js" defer></script>
 </head>
 
 <body>
-  <!-- Header Section -->
-  <header class="header">
-    <a href="./toppicks.html">
-      <button type="button" class="topPicksBtn">
-        <span class="snowflake">❈</span> Top Picks
-      </button>
-    </a>
-    <a href="./about.html">
-      <button type="button" class="aboutBtn">About</button>
-    </a>
-    <a href="./closet.html">
-      <button type="button" class="closetBtn">Your Closet</button>
-    </a>
-  </header>
-
-  <!-- Main Content Container -->
-  <main class="main-content">
-    <!-- Outfit Finder Image with Magnifier Effect -->
-    <div class="img-magnifier-container">
-      <img id="myimage" src="./images/outfit.png" alt="Outfit Image">
+  <!-- Main Content -->
+  <div class="background">
+    <div class="content">
+      <img src="./images/HomePageBackground.PNG" alt="Overlay Image" id="myimage" class="overlay-image">
       <a href="./generator.html">
-        <button type="button" class="generate-button">Generate Here    ➲</button>
+        <button type="button" class="generate-button">Generate Here ➲</button>
       </a>
     </div>
+  </div>
 
-    <!-- Fashion Model Card -->
-    <div class="box image-box">
-      <div class="year">2024</div>
-      <img src="images/Fashion_model.png" alt="Fashion Model" class="fashion-image">
-    </div>
-  </main>
-
-
-  <!-- Bottom Fashion Assistant Box -->
-    <div class="box assistant">
-      <span class="assistant-text">------  Fashion Assistant</span>
-    </div>
-
-  <!-- JavaScript to initialize magnification -->
+  <!-- Include magnify script if needed elsewhere -->
   <script>
-    // Initialize magnification on 'myimage' with a zoom level of 3
+    // If the magnify function is needed on this page
     window.addEventListener('load', function() {
       magnify("myimage", 1.5);
     });

@@ -6,18 +6,25 @@
 }
 
 body {
-    background-color: #FAFEC3;
+    background-color: rgb(241,234,223); /* Yellow background */
     font-family: Arial, sans-serif;
     min-height: 100vh;
+
+    /* Grid background */
+    background-image:
+        linear-gradient(to right, gray 1px, transparent 1px),
+        linear-gradient(to bottom, gray 1px, transparent 1px);
+    background-size: 40px 40px; /* Adjust the grid size here */
 }
 
-/* Navigation */
+ /* Navigation */
 .nav {
-    background-color: #FAFEC3;
-    padding: 2rem;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    margin: 0 auto 4rem;
+    gap: 10px; /* Gap between buttons */
+    padding: 10px;
 }
 
 .nav a {
@@ -27,7 +34,7 @@ body {
 .nav-btn {
     display: flex;
     align-items: center;
-    background-color: transparent;
+    background-color: white;
     color: #000;
     border-radius: 50px;
     border: 2px solid #000;
