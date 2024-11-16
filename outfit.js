@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-  let outfitItems = {};
+  // Define outfitItems directly in the JavaScript
+  const outfitItems = {
+    shirts: generateImageList('images/shirts/', 'Shirt', 9),
+    accessories: generateImageList('images/accessories/', 'Acess', 12),
+    pants: generateImageList('images/pants/', 'Pants', 9),
+    shoes: generateImageList('images/shoes/', 'Shoes', 8),
+  };
 
-  // Fetch the outfit items when the page loads
-  fetch('/outfit-items')
-    .then(response => response.json())
-    .then(data => {
-      outfitItems = data;
-      generateNewOutfit(); // Generate the initial outfit
-    })
-    .catch(error => console.error('Error fetching outfit items:', error));
+  function generateImageList(path, baseName, count) {
+    const list = [];
+    for (let i = 1; i <= count; i++) {
+      list.push(`${path}${baseName}${i}.JPG`);
+    }
+    return list;
+  }
 
   // Function to get a random item from an array
   function getRandomItem(array) {
@@ -41,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 50);
     }
   }
+
+  // Generate the initial outfit when the page loads
+  generateNewOutfit();
 
   // Get DOM elements
   const heartButton = document.querySelector('.heart');
@@ -91,5 +99,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     alert('Outfit saved to your closet!');
   }
-});
 
+  // Optional: Preload all images to improve performance
+  preloadAllImages();
+
+  function preloadAllImages() {
+    Object.values(outfitItems).forEach(categoryArray => {
+      categoryArray.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    });
+  }
+});

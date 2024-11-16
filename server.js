@@ -1,3 +1,4 @@
+/*
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -22,3 +23,4 @@ app.get('/outfit-items', (req, res) => {
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
+*/
