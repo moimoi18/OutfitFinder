@@ -25,6 +25,7 @@ body {
     margin: 0 auto 4rem;
     gap: 10px; /* Gap between buttons */
     padding: 10px;
+    
 }
 
 .nav a {
@@ -42,6 +43,8 @@ body {
     padding: 8px 30px;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+
 }
 
 .nav-btn:hover {
