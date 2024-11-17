@@ -45,10 +45,6 @@ body {
   background-color: rgba(250, 250, 227, 1);
 }
 
-.topPicksBtn.active {
-  background-color: lightblue; /* Highlight the active page */
-}
-
 .topPicksBtn .snowflake {
   font-size: 20px;
   transform: scale(2.3);

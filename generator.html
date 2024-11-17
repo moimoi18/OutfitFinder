@@ -20,18 +20,18 @@
             font-family: Arial, sans-serif;
             min-height: 100vh;
             padding: 20px;
-            position: relative; /* Added for positioning the Go Back button */
+            position: relative; /* For positioning the Go Back button */
         }
 
         /* Navigation */
         .nav {
             display: flex;
-            justify-content: flex-end; /* Align items to the right */
+            justify-content: flex-end;
             align-items: center;
-            margin: 0 auto 3rem; /* Reduce bottom margin from 4rem to 3rem */
-            gap: 10px; /* Add spacing between buttons */
-            position: relative; /* Ensure positioning can be tweaked */
-            top: -10px; /* Move the navbar slightly upward */
+            margin: 0 auto 3rem;
+            gap: 10px;
+            position: relative;
+            top: -10px;
         }
 
         .nav a {
@@ -102,12 +102,6 @@
             cursor: pointer;
         }
 
-        .split-slot .slot-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
         .divider {
             position: absolute;
             top: 0;
@@ -155,7 +149,18 @@
         .slot-title {
             font-weight: bold;
             margin-bottom: 10px;
-            text-align: center;
+            text-align: left; /* Align text to the left */
+            display: flex;
+            align-items: center; /* Center vertically */
+        }
+
+        .slot-title .circle {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ffeb3b; /* Yellow color */
+            border-radius: 50%;
+            margin-right: 8px;
         }
 
         .slot-content {
@@ -240,12 +245,10 @@
         <div class="screen-section">
             <div class="screen">
                 <div class="split-slot">
-                    <div class="slot-title">TOP</div>
                     <img id="shirtImg" src="images/shirts/1.JPG" alt="Top">
                 </div>
                 <div class="divider"></div>
                 <div class="split-slot">
-                    <div class="slot-title">BOTTOM</div>
                     <img id="pantsImg" src="images/pants/8.JPG" alt="Bottom">
                 </div>
             </div>
@@ -258,13 +261,17 @@
         <!-- Right Section -->
         <div class="right-section">
             <div class="slot">
-                <div class="slot-title">ACCESSORIES</div>
+                <div class="slot-title">
+                    <span class="circle"></span>ACCESSORIES
+                </div>
                 <div class="slot-content">
                     <img id="accessoryImg" src="images/accessories/22.JPG" alt="Accessory">
                 </div>
             </div>
             <div class="slot">
-                <div class="slot-title">SHOES</div>
+                <div class="slot-title">
+                    <span class="circle"></span>SHOES
+                </div>
                 <div class="slot-content">
                     <img id="shoesImg" src="images/shoes/15.JPG" alt="Shoes">
                 </div>
@@ -279,4 +286,3 @@
     <script src="outfit.js"></script>
 </body>
 </html>
-

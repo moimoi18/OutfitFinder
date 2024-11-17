@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
       'images/pants/12.JPG',
       'images/pants/13.JPG',
       'images/pants/14.JPG',
-      'images/pants/Pants1.JPG',
       'images/pants/Pants2.JPG',
     ],
     shoes: [

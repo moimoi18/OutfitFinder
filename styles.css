@@ -23,10 +23,11 @@ body, html {
 }
 
 .overlay-image {
+  margin-top: 3rem;
   display: block;
   max-width: 100%;
   height: auto;
-  width: 1000px; /* Set desired width */
+  width: 300rem; /* Set desired width */
 }
 
 .author {
@@ -45,7 +46,7 @@ body, html {
   left: 50%;
   transform: translate(-50%, -50%);
   /* Style for the "Generate Here" button */
-  background-color: #ffffff; /* White background */
+  background-color: #fae059; /* White background */
   color: #000000; /* Black text */
   font-size: 1.5em;
   font-weight: bold;
