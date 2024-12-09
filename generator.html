@@ -235,6 +235,7 @@
         }
     </style>
 <script src="buttonSounds.js" defer></script>
+<script src="outfit.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -285,8 +286,24 @@
     </div>
 
     <!-- Go Back Button -->
-    <a href="./index.html" class="go-back-button">GO BACK</a>
+    <button type="button" class="go-back-button" id="go-back-button">GO BACK</button>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+      const goBackBtn = document.getElementById('go-back-button');
+      
+      goBackBtn.addEventListener('click', function() {
+        // Play the click sound
+        playClickSound().then(() => {
+          // Wait a little moment to ensure the sound started playing
+          setTimeout(() => {
+            // Navigate after the sound plays
+            window.location.href = "./index.html";
+          }, 300);
+        });
+      });
+    });
+    </script>
     <!-- Include the JavaScript file -->
     <script src="outfit.js"></script>
     <script src="audio-control.js"></script>

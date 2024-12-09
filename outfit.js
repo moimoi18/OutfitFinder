@@ -4,7 +4,8 @@ clickSound.volume = 0.5; // Adjust volume as needed
 
 function playClickSound() {
     const sound = clickSound.cloneNode();
-    sound.play().catch(error => {
+    // Return the promise so we can chain actions after playing
+    return sound.play().catch(error => {
         console.log("Audio playback failed:", error);
     });
 }

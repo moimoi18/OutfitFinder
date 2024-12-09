@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="magnify.js" defer></script>
   <script src="audio-control.js" defer></script>
+  <script src="outfit.js" defer></script>
 </head>
 
 <body>
@@ -13,18 +14,31 @@
   <div class="background">
     <div class="content">
       <img src="./images/HomePageBackground.png" alt="Overlay Image" id="myimage" class="overlay-image">
-      <a href="./generator.html">
-        <button type="button" class="generate-button">GENERATE HERE ➲</button>
-      </a>
+      <!-- Removed the <a> tag and added an id to the button -->
+      <button type="button" class="generate-button" id="generate-button">GENERATE HERE ➲</button>
     </div>
   </div>
 
-  <!-- Include magnify script if needed elsewhere -->
   <script>
-    // If the magnify function is needed on this page
+    // If magnify function is needed on this page
     window.addEventListener('load', function() {
       magnify("myimage", 1.5);
+    });
+
+    // Add event listener for generate button to play sound then navigate
+    window.addEventListener('DOMContentLoaded', () => {
+      const generateBtn = document.getElementById('generate-button');
+      generateBtn.addEventListener('click', function() {
+        // Play the click sound
+        playClickSound().then(() => {
+          // Give it a brief moment to ensure audio has started
+          setTimeout(() => {
+            window.location.href = "./generator.html";
+          }, 300);
+        });
+      });
     });
   </script>
 </body>
 </html>
+
